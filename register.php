@@ -17,25 +17,57 @@
         </header>
         <div class="row">
           <form action="regist.php" method="post">
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Names</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="John Robert">
+            <div class="col-md-6 mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Names *</label>
+              <input type="email" class="form-control" required="true" 
+                oninvalid="this.setCustomValidity('Please fill in all the required fields *')"
+                oninput="this.setCustomValidity('')"
+                id="exampleFormControlInput1" placeholder="John Robert">
             </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Surname</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Doe">
+            <div class="col-md-6 mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Surname *</label>
+              <input type="email" class="form-control" required="true" 
+                oninvalid="this.setCustomValidity('Please fill in all the required fields *')"
+                oninput="this.setCustomValidity('')"
+                id="exampleFormControlInput1" placeholder="Doe">
             </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="john.doe@example.com">
+            <div class="col-md-6 mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Email address *</label>
+              <input type="email" class="form-control" required="true" 
+                oninvalid="this.setCustomValidity('Please fill in all the required fields *')"
+                oninput="this.setCustomValidity('')"
+                id="exampleFormControlInput1" placeholder="john.doe@example.com">
             </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0712345678">
+            <div class="col-md-6 mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Phone Number *</label>
+              <input type="email" class="form-control" required="true" 
+                oninvalid="this.setCustomValidity('Please fill in all the required fields *')"
+                oninput="this.setCustomValidity('')"
+                id="exampleFormControlInput1" placeholder="0712345678">
             </div>
-            <div class="mb-3">
-              <input type="submit" value="Register">
-              <input type="button" value="Cancel" onclick="document.location.href='index.php'">
+            <div class="col-md-6 mb-3">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Register
+              </button>
+              <input type="button" class="btn btn-default" value="Go Back Home" onclick="document.location.href='index.php'">
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Clicking on the "Understood, Proceed" button means you have made sure everything looks good
+                    and you are happy to proceed with registering this user.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Understood, Proceed">
+                  </div>
+                </div>
+              </div>
             </div>
           </form>
         </div>

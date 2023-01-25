@@ -1,3 +1,8 @@
+<?php
+    include 'db_config.php';
+
+    $users = $conn->query("SELECT * FROM user AS u ORDER BY u.names ASC");
+?>
 <!Doctype html>
 <html lang="en">
   <head>
@@ -18,7 +23,32 @@
             <input type="submit" value="Search">
         </header><br>
         <div class="row">
-            <div class="col-md-3  mr-2 mb-2">
+            <?php
+                if($users->rowCount() <= 0)
+                {
+                    echo "<h3>No One has been registered yet: ".$users->rowCount()."</h3>";
+                }
+                else {
+                    # code...
+                    while ($user = $users->fetch(PDO::FETCH_ASSOC)) {
+                        # code...
+                        echo '
+                            <div class="col-md-3 col-sm-6 mr-2 mb-2" onclick="document.location.href=\'define-registration.php?u='.md5($user['userid']).'\'">
+                                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
+                                    <div class="card-body text-center">
+                                        <div class="text-center">
+                                            <i class="fa fa-2x fa-code my-2"></i>
+                                        </div>
+                                        '.$user['names'].' '.$user['surname'].'
+                                    </div>
+                                </div>
+                            </div>
+                        ';
+                    }
+                }
+            ?>
+            
+            <!-- <div class="col-md-3 col-sm-6 mr-2 mb-2">
                 <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
                     <div class="card-body text-center">
                         <div class="text-center">
@@ -27,247 +57,7 @@
                         First Registration
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3  mr-2 mb-2">
-                <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                    <div class="card-body text-center">
-                        <div class="text-center">
-                            <i class="fa fa-2x fa-code my-2"></i>
-                        </div>
-                        First Registration
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div><br>
         <input type="button" value="Go Back to homepage" onclick="document.location.href='index.php'">
     </div>

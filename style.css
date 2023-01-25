@@ -17,3 +17,7 @@ html, body {
     width: 50%;
 }
 
+a.student {
+    text-decoration: none;
+    color: darkblue;
+}
